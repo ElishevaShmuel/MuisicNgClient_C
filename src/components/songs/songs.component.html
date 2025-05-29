@@ -1,0 +1,39 @@
+<div class="container">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>חפש שיר</mat-label>
+      <input 
+        matInput 
+        [(ngModel)]="searchTerm"
+        (input)="onSearchChange()"
+        placeholder="הקלד שם שיר...">
+    </mat-form-field>
+
+    @if (loading) {
+      <div class="loading-container">
+        <mat-spinner></mat-spinner>
+      </div>
+    }
+
+    @if (error) {
+      <div class="error-message">
+        {{ error }}
+      </div>
+    }
+
+    @if (!loading && !error) {
+      <div class="songs-list">
+        @for (song of filteredSongs; track song.Id) {
+          <app-file-card 
+            [song]="song"
+            [isMine]="false">
+          </app-file-card>
+        }
+        
+        @if (filteredSongs.length === 0 && searchTerm) {
+          <div class="no-results">
+            לא נמצאו שירים התואמים לחיפוש
+          </div>
+        }
+      </div>
+    }
+  </div>

@@ -1,0 +1,28 @@
+<mat-card class="file-card" [class.playing]="isPlaying">
+    <div class="card-content">
+      <div class="controls">
+        <button mat-icon-button (click)="togglePlay()" class="play-button">
+          @if (!isPlaying) {
+            <mat-icon></mat-icon>
+          } @else {
+            <div class="sound-bars">
+              <div class="bar" [style.animation-delay]="'0ms'"></div>
+              <div class="bar" [style.animation-delay]="'200ms'"></div>
+              <div class="bar" [style.animation-delay]="'400ms'"></div>
+            </div>
+          }
+        </button>
+        
+        <button mat-icon-button (click)="downloadFile()" class="download-button">
+          <mat-icon></mat-icon>
+        </button>
+      </div>
+      
+      <div class="song-info">
+        <div class="song-name">{{ song.FileName }}</div>
+        <div class="song-cost">{{ song.Cost }}</div>
+      </div>
+    </div>
+  </mat-card>
+
+

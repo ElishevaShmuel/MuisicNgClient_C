@@ -1,0 +1,56 @@
+<div class="user-management">
+    <h2>User Management</h2>
+    
+    <div class="controls">
+      <input 
+        type="text" 
+        placeholder="Search users..." 
+        [(ngModel)]="searchTerm"
+        (input)="filterUsers()"
+        class="search-input"
+      >
+      <select [(ngModel)]="statusFilter" (change)="filterUsers()" class="status-filter">
+        <option value="">All Users</option>
+      </select>
+    </div>
+    
+    <div class="users-table">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of filteredUsers; track user.id) {
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="pagination">
+      <button 
+        (click)="previousPage()" 
+        [disabled]="currentPage === 1"
+        class="btn-secondary"
+      >
+        Previous
+      </button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button 
+        (click)="nextPage()" 
+        [disabled]="currentPage === totalPages"
+        class="btn-secondary"
+      >
+        Next
+      </button>
+    </div>
+  </div>

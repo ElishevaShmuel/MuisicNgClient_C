@@ -1,0 +1,63 @@
+.container {
+    padding-top: 36px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .search-field {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .search-field ::ng-deep .mat-mdc-form-field {
+    --mdc-outlined-text-field-input-text-color: #ffffff;
+    --mdc-outlined-text-field-label-text-color: #cccccc;
+    --mdc-outlined-text-field-outline-color: #cccccc;
+  }
+
+  .search-field ::ng-deep .mat-mdc-form-field.mat-focused {
+    --mdc-outlined-text-field-focused-label-text-color: #cccccc;
+    --mdc-outlined-text-field-focused-outline-color: #cccccc;
+  }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 48px 0;
+  }
+
+  .loading-container ::ng-deep .mat-mdc-progress-spinner circle {
+    stroke: #cccccc;
+  }
+
+  .error-message {
+    color: #f44336;
+    text-align: center;
+    padding: 24px;
+    background-color: rgba(244, 67, 54, 0.1);
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .songs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .no-results {
+    text-align: center;
+    color: #cccccc;
+    padding: 48px 0;
+    font-size: 16px;
+  }
+
+  /* רספונסיבי */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
