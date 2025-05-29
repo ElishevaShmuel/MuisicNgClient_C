@@ -9,7 +9,7 @@ import { environment } from '../../environments/environments';
 })
 export class UserService {
   private http = inject(HttpClient);
-  private apiUrl= environment.apiUrl;;
+  private apiUrl= environment.API_URL;;
 
 
   async getUsers(): Promise<Observable<UserModule[]>> {

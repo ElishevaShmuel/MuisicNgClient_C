@@ -11,7 +11,7 @@ import { environment } from '../../environments/environments';
 export class AuthService {
   private http = inject(HttpClient);
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  private apiUrl = environment.apiUrl; 
+  private apiUrl = environment.API_URL; 
 
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 

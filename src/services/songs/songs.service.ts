@@ -11,7 +11,7 @@ import { environment } from '../../environments/environments';
   providedIn: 'root'
 })
 export class SongsService {
-  private baseUrl = environment.apiUrl ;
+  private baseUrl = environment.API_URL ;
 
   constructor(private http: HttpClient) {}
 
