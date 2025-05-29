@@ -29,7 +29,7 @@ export class FileCardComponent implements OnDestroy {
   async togglePlay(): Promise<void> {
     if (!this.audio) {
       try {
-        console.log("Attempting to play song:", this.song.fileName);
+        console.log("Attempting to play song:", this.song);
         
         (await this.musicService.getDownloadUrl(this.song.fileName)).subscribe({
           next: (response) => {
@@ -69,12 +69,12 @@ export class FileCardComponent implements OnDestroy {
     console.log("wwwwwwwwwww");
     
    
-      (await this.musicService.downloadFile(this.song.FileName)).subscribe({
+      (await this.musicService.downloadFile(this.song.fileName)).subscribe({
         next: (blob) => {
           const blobUrl = window.URL.createObjectURL(blob);
           const link = document.createElement("a");
           link.href = blobUrl;
-          link.setAttribute("download", this.song.FileName || "audio.mp3");
+          link.setAttribute("download", this.song.fileName || "audio.mp3");
           document.body.appendChild(link);
           link.click();
           document.body.removeChild(link);

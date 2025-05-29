@@ -9,6 +9,7 @@ import { Subject, takeUntil, startWith, map, combineLatest } from 'rxjs';
 import { FileCardComponent } from '../file-card/file-card.component';
 import { SongModule } from '../../models/song/song.module';
 import { SongsService } from '../../services/songs/songs.service';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-all-files-list',
@@ -57,7 +58,7 @@ export class SongsComponent implements OnInit, OnDestroy {
           console.log('Songs loaded:', files);
           this.songs = files;
           this.filterSongs();
-          this.loading = false;
+          this.loading = false;          
         },
         error: (err) => {
           console.error('Error loading files:', err);
@@ -77,13 +78,18 @@ export class SongsComponent implements OnInit, OnDestroy {
       this.filteredSongs = [...this.songs];
     } else {
       this.filteredSongs = this.songs.filter(song =>
-        song.FileName.toLowerCase().includes(this.searchTerm.toLowerCase())
+        song.fileName.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
+      
+      
     }
     console.log('Filtered songs:', this.filteredSongs);
+    console.log(this.filteredSongs.map(song => ({ id: song.id, fileName: song.fileName })));
+
   }
 
-  trackBySongId(index: number, song: SongModule): number {
-    return song.Id;
+  trackBySongId(index: number, song: SongModule): number | string {
+    return song.id || song.fileName || index;
   }
+  
 }

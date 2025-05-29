@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { UserModule } from '../../models/user/user.module';
+import { MatIconModule } from '@angular/material/icon';
+import { log } from 'console';
 
 
 
 @Component({
   selector: 'app-user-management',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
@@ -32,6 +34,8 @@ export class UserManagementComponent implements OnInit {
     (await this.userService.getUsers()).subscribe({
       next: (users) => {
         this.users = users;
+        console.log('Users loaded:', this.users);
+  
         this.filterUsers();
       },
       error: (error) => console.error('Error loading users:', error)
@@ -68,15 +72,16 @@ export class UserManagementComponent implements OnInit {
   //   });
   // }
 
-  editUser(user: UserModule ) {
-    // Implement edit user functionality
-    console.log('Edit user:', user);
-  }
+  // editUser(user: UserModule ) {
+  //   // Implement edit user functionality
+  //   console.log('Edit user:', user);
+  // }
 
   async deleteUser(user: UserModule) {
     if (confirm('Are you sure you want to delete this user?')) {
-      (await this.userService.deleteUser(user.id)).subscribe({
+      (await this.userService.deleteUser(user)).subscribe({
         next: () => {
+          console.log("User deleted successfully:", user);          
           this.loadUsers();
         },
         error: (error) => console.error('Error deleting user:', error)

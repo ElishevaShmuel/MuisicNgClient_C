@@ -22,9 +22,9 @@
 
     @if (!loading && !error) {
       <div class="songs-list">
-        @for (song of filteredSongs; track song.Id) {
+        @for (song1 of filteredSongs; track trackBySongId(song1.id,song1)) {
           <app-file-card 
-            [song]="song"
+            [song]="song1"
             [isMine]="false">
           </app-file-card>
         }

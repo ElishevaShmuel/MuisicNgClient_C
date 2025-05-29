@@ -11,13 +11,13 @@ import { CommonModule } from '@angular/common';
 })
 export class SongModule {
 constructor(
-  @Inject('Id') public Id: number,
-  @Inject('FileName') public FileName: string,
-    @Inject('MimeType') public MimeType: string,
-    @Inject('Size') public Size: number,
-    @Inject('FilePath') public FilePath: string,
-    @Inject('UserId') public UserId: number,
-    @Inject('Cost') public Cost: number,
+  @Inject('Id') public id: number,
+  @Inject('FileName') public fileName: string,
+    @Inject('MimeType') public mimeType: string,
+    @Inject('Size') public size: number,
+    @Inject('FilePath') public filePath: string,
+    @Inject('UserId') public userId: number,
+    @Inject('Cost') public cost: number,
   ) { }
 
 }
