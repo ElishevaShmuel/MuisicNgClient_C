@@ -3,12 +3,13 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserModule } from '../../models/user/user.module';
+import { environment } from '../../environments/environments';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private http = inject(HttpClient);
-  private apiUrl = 'https://localhost:7264/api';
+  private apiUrl= environment.apiUrl;;
 
 
   async getUsers(): Promise<Observable<UserModule[]>> {

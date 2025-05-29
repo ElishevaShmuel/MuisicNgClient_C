@@ -4,12 +4,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { SongModule } from '../../models/song/song.module';
+import e from 'express';
+import { environment } from '../../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongsService {
-  private baseUrl = 'https://localhost:7264/api/AudioFile';
+  private baseUrl = environment.apiUrl ;
 
   constructor(private http: HttpClient) {}
 

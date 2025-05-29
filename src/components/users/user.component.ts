@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 import { UserModule } from '../../models/user/user.module';
 import { MatIconModule } from '@angular/material/icon';
-import { log } from 'console';
 
 
 
@@ -13,7 +12,7 @@ import { log } from 'console';
   standalone: true,
   imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+  styleUrls: ['./user.component.css']
 })
 export class UserManagementComponent implements OnInit {
   private userService = inject(UserService);

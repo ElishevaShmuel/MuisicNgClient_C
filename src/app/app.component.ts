@@ -1,14 +1,16 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import {  RouterOutlet } from "@angular/router";
 import { NavbarComponent } from "../components/nav-bar/nav-bar.component";
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-root',
-  imports: [ NavbarComponent, RouterOutlet,
-    RouterLink,
-    RouterLinkActive],
+  standalone: true,
+  imports: [
+    NavbarComponent,
+    RouterOutlet
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'my-first-app';
