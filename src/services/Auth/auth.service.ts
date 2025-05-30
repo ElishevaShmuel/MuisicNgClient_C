@@ -38,6 +38,9 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
+  if (typeof window === 'undefined') {
+      return false; // Not in a browser environment
+    }
     return !!localStorage.getItem('adminToken');
   }
 }
