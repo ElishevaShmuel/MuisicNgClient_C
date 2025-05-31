@@ -13,22 +13,31 @@ export class UserService {
 
 
   async getUsers(): Promise<Observable<UserModule[]>> {
-    const token = localStorage.getItem('adminToken');
-    
+    if (typeof window !== 'undefined') {
+
+    const token = localStorage.getItem('adminToken');    
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     console.log("uuuuuuuuuuu");
-
-    return await this.http.get<UserModule[]>(`${this.apiUrl}/User/users`, { headers });
-
+        return await this.http.get<UserModule[]>(`${this.apiUrl}/User/users`, { headers });
+    }
+    return new Observable<UserModule[]>(subscriber => {
+      subscriber.error(new Error('Not in a browser environment'));
+    });
   }
 
 
 
   async deleteUser(user: UserModule): Promise<Observable<any>> {
+    if (typeof window !== 'undefined') {
+
     const token = localStorage.getItem('adminToken');
 
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return await this.http.delete(`${this.apiUrl}/User/delete`,{headers, body: user});
+    }
+    return new Observable<any>(subscriber => {
+      subscriber.error(new Error('Not in a browser environment'));
+    });
   }
 }
