@@ -39,7 +39,10 @@ export class SongsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+
     this.loadFiles();
+    }
   }
 
   ngOnDestroy(): void {
