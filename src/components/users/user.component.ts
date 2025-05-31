@@ -26,7 +26,10 @@ export class UserManagementComponent implements OnInit {
   itemsPerPage = 10;
 
   ngOnInit() {
+    if (typeof window !== 'undefined') {
+
     this.loadUsers();
+    }
   }
 
   async loadUsers() {
