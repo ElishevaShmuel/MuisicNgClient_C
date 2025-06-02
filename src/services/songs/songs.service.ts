@@ -16,17 +16,17 @@ export class SongsService {
   constructor(private http: HttpClient) {}
 
  async getFiles(): Promise<Observable<SongModule[]>> {
-    return await this.http.get<SongModule[]>(`${this.baseUrl}/get`);
+    return await this.http.get<SongModule[]>(`${this.baseUrl}/AudioFile/get`);
   }
 
   async getFilesByUserId(userId: number): Promise<Observable<SongModule[]>> {
-    return await this.http.get<SongModule[]>(`${this.baseUrl}/getById`, {
+    return await this.http.get<SongModule[]>(`${this.baseUrl}/AudioFile/getById`, {
       params: { userId: userId.toString() }
     });
   }
 
  async getDownloadUrl(fileName: string): Promise<Observable<{ url: string; }>> {
-    return await this.http.get<{ url: string }>(`${this.baseUrl}/Download`, {
+    return await this.http.get<{ url: string }>(`${this.baseUrl}/AudioFile/Download`, {
       params: { fileName }
     });
   }
